@@ -19,39 +19,40 @@
 		<ui:define name="input">
 	
 		
-			<p>aqui entra o nome</p>
-			<p:inputText />
+			<p>Insert the name of the product</p>
+			<p:inputText value="#{productManager.produto.name}"/>
+
 			
 			
 			<h:form>
-				<p>aqui entra o desconto</p>
+				<p>Select the discount of the product (%)</p>
 				<h:panelGrid columns="2" cellpadding="1" styleClass="ui-grid">
-					<p:spinner id="minMax" value="#{spinnerView.number3}" min="0"
+					<p:spinner id="minMax" value="#{productManager.produto.discount}" min="0"
 						max="100" />
 				</h:panelGrid>
 			</h:form>
 
 			<h:form>
-				<p>aqui entra o iva</p>
+				<p>Select the IVA of the product</p>
 				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
 					columnClasses="label, value">
-					<p:outputLabel for="basic" value="Basic:" />
-					<p:selectOneListbox id="basic" value="#{selectOneView.option}">
-						<f:selectItem itemLabel="6%" itemValue="1" />
-						<f:selectItem itemLabel="13%" itemValue="2" />
-						<f:selectItem itemLabel="23%" itemValue="3" />
+					<p:outputLabel for="basic" value="" />
+					<p:selectOneListbox id="basic" value="#{productManager.produto.iva}">
+						<f:selectItem itemLabel="6%" itemValue="6" />
+						<f:selectItem itemLabel="13%" itemValue="13" />
+						<f:selectItem itemLabel="23%" itemValue="23" />
 					</p:selectOneListbox>
 				</h:panelGrid>
 			</h:form>
 			
 			<h:form>
-			<p>aqui entra o pvp</p>
-				<p:inputNumber />
+			<p>Select the PVP of the product </p>
+				<p:inputNumber value="#{productManager.produto.pvp}"/>
 			</h:form>
 	
 		<br></br>
 		
-
+		<!--   <h:commandButton action="#{}" value="Submit" /> -->
 
 		</ui:define>
 

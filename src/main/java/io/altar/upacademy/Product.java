@@ -3,7 +3,7 @@ package io.altar.upacademy;
 
 public class Product extends Entity {
 	
-	private String nome;
+	private String name;
 	private Shelf listaPrateleiras[];
 	private double discount;
 	private int iva;
@@ -18,14 +18,14 @@ public class Product extends Entity {
 		this.discount = desconto;
 		this.iva = iva;
 		this.pvp = pvp;
-		this.nome=nome;
+		this.name=nome;
 	}
 	public String getNome() {
-		return nome;
+		return name;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.name = nome;
 	}	
 	public Shelf[] getListaPrateleiras() {
 		return listaPrateleiras;
