@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+
+    <h:head>
+    <h:outputStylesheet name="bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet name="css/template.css"/>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js"> </script>
+    </h:head>
+
+    <h:body>
+	<div id="page">
+
+
+	    <div id="header" class="row">
+	    	<div class="col-md-12">    
+					<h1 class="titulo">Stock Manager</h1>
+					<h3 class="titulo">It has never been so easy</h3>
+			</div>
+		</div>
+	    <div id="content" class="row">
+	    		<div id="buttonList" class="col-md-6"> 
+	    			<div id="button" class="btn-group-vertical">
+		    			<ui:insert name="button1" >
+		   				</ui:insert>
+		   				<ui:insert name="button2" >
+		   				</ui:insert>
+		   				<ui:insert name="button3" >
+		   				</ui:insert>
+		   				<ui:insert name="button4" >
+		   				</ui:insert>
+		   				<ui:insert name="button5" >
+		   				</ui:insert>
+		   			</div>	
+	    		</div>
+	 			<div id="input" class="col-md-6">
+	 				<ui:insert name="input" >
+	   				</ui:insert>
+		   		</div>
+		</div>
+
+	    <div id="footer" class="row">
+	    	<div class="col-md-12"> 
+    			<p> Web App developed by : Andre Rei </p>
+    		</div>
+    	</div>	
+
+    </div>
+
+    </h:body>
+</html>
