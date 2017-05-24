@@ -6,39 +6,25 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsf/jstl/core"
-	 xmlns:p="http://primefaces.org/ui"
-	template="/templates/template.xhtml"
-	>
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
 
-	<ui:define name="button1">
+	<ui:define name="buttons">
 		<h:form>
-			<h:commandButton value="Create" class="button" action="createProduct" />
-		</h:form>
-	</ui:define>
-	<ui:define name="button2">
-		<h:form>
-			<h:commandButton value="Update" class="button" action="updateProduct" />
-		</h:form>
-	</ui:define>
-	<ui:define name="button3">
-		<h:form>
-			<h:commandButton value="Consult" class="button" action="readProduct" />
-		</h:form>
-	</ui:define>
-	<ui:define name="button4">
-		<h:form>
-			<h:commandButton value="Remove" class="button" action="removeProduct" />
-		</h:form>
-	</ui:define>
-	<ui:define name="button5">
-		<h:form>
-			<h:commandButton value="Previous Menu" class="button" action="index" />
+			<p:commandButton value="Create" class="button" action="createProduct" />
+
+			<p:commandButton value="Update" class="button" action="updateProduct" />
+
+			<p:commandButton value="Consult" class="button" action="readProduct" />
+
+			<p:commandButton value="Remove" class="button" action="removeProduct" />
+
+			<p:commandButton value="Previous Menu" class="button" action="index" />
 		</h:form>
 	</ui:define>
 
 	<ui:define name="input">
-	
-	
+
+
 		<h:form id="form">
 			<p:dataGrid var="car" value="#{dataGridView.cars}" columns="3"
 				layout="grid" rows="12" paginator="true" id="cars"
@@ -86,7 +72,7 @@
 
 						<h:outputText value="PVP:" />
 						<h:outputText value="#{dataGridView.selectedCar.year}" />
-						
+
 						<h:outputText value="IVA:" />
 						<h:outputText value="#{dataGridView.selectedCar.color}"
 							style="color:#{dataGridView.selectedCar.color}" />
@@ -97,8 +83,8 @@
 				</p:outputPanel>
 			</p:dialog>
 		</h:form>
-		
-		
+
+
 	</ui:define>
 
 </ui:composition>

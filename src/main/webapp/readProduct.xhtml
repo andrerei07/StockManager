@@ -6,20 +6,21 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsf/jstl/core"
-	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/template.xhtml">
 
 
-	<ui:define name="button5">
+	<ui:define name="buttons">
 		<h:form>
-			<h:commandButton value="Previous Menu" class="button"
+			<p:commandButton value="Previous Menu" class="button"
 				action="product" />
 		</h:form>
 	</ui:define>
 
 	<ui:define name="input">
-
-		<div>
-	<!--		<h:form>
+		<h:form>
+			<div>
+			<!--		<h:form>
 				<p:growl id="msgs" showDetail="true" />
 
 				<h3 style="margin-top: 0">Basic OrderList</h3>
@@ -72,19 +73,17 @@
 				</p:dialog>
 			</h:form>
 		-->
-		</div>
+			</div>
+			<div>
+				<p>Product Discount</p>
+				<p:inputText value="" disabled="true" />
+				<p>Product IVA</p>
+				<p:inputText value="" disabled="true" />
+				<p>Product PVP</p>
+				<p:inputText value="" disabled="true" />
+			</div>
 
-		<div>
-
-			<p>Product Discount</p>
-			<p:inputText value="" disabled="true" />
-			<p>Product IVA</p>
-			<p:inputText value="" disabled="true" />
-			<p>Product PVP</p>
-			<p:inputText value="" disabled="true" />
-		</div>
-
-
+		</h:form>
 	</ui:define>
 
 </ui:composition>

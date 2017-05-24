@@ -1,5 +1,10 @@
 io/altar/upacademy/Shelf.class
 io/altar/upacademy/Entity.class
+io/altar/upacademy/storage/EntityRepository.class
+io/altar/upacademy/storage/ProductRepository.class
 io/altar/upacademy/view/ManagedShelf.class
 io/altar/upacademy/Product.class
+io/altar/upacademy/services/ProductService.class
 io/altar/upacademy/view/ManagedProduct.class
+io/altar/upacademy/storage/ShelfRepository.class
+io/altar/upacademy/services/ShelfService.class

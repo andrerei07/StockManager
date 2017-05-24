@@ -1,5 +1,10 @@
+/Users/alunotarde/Documents/workspace/WebApp/src/main/java/io/altar/upacademy/storage/EntityRepository.java
 /Users/alunotarde/Documents/workspace/WebApp/src/main/java/io/altar/upacademy/Entity.java
 /Users/alunotarde/Documents/workspace/WebApp/src/main/java/io/altar/upacademy/Product.java
+/Users/alunotarde/Documents/workspace/WebApp/src/main/java/io/altar/upacademy/storage/ShelfRepository.java
+/Users/alunotarde/Documents/workspace/WebApp/src/main/java/io/altar/upacademy/services/ProductService.java
 /Users/alunotarde/Documents/workspace/WebApp/src/main/java/io/altar/upacademy/Shelf.java
+/Users/alunotarde/Documents/workspace/WebApp/src/main/java/io/altar/upacademy/services/ShelfService.java
+/Users/alunotarde/Documents/workspace/WebApp/src/main/java/io/altar/upacademy/storage/ProductRepository.java
 /Users/alunotarde/Documents/workspace/WebApp/src/main/java/io/altar/upacademy/view/ManagedShelf.java
 /Users/alunotarde/Documents/workspace/WebApp/src/main/java/io/altar/upacademy/view/ManagedProduct.java

@@ -6,42 +6,28 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsf/jstl/core"
-	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	xmlns:p="http://primefaces.org/ui" 
+	template="/templates/template.xhtml">
 
 
-	<ui:define name="button5">
+	<ui:define name="buttons">
 		<h:form>
-			<h:commandButton value="Previous Menu" class="button"
+			<p:commandButton value="Previous Menu" class="button"
 				action="product" />
 		</h:form>
 	</ui:define>
-
 	<ui:define name="input">
+		<h:form>
+			<div>
+				<p>Insert the name of the product</p>
+				<p:inputText />
 
-		<div>
-			<p>Current Product Name</p>
-			<p:inputText value="" disabled="true" />
-			<p>Current Product Discount</p>
-			<p:inputText value="" disabled="true" />
-			<p>Current Product IVA</p>
-			<p:inputText value="" disabled="true" />
-			<p>Current Product PVP</p>
-			<p:inputText value="" disabled="true" />
-		</div>
-
-		<div>
-			<p>Insert the name of the product</p>
-			<p:inputText />
-
-			<h:form>
 				<p>Select the discount of the product (%)</p>
 				<h:panelGrid columns="2" cellpadding="1" styleClass="ui-grid">
 					<p:spinner id="minMax" value="#{spinnerView.number3}" min="0"
 						max="100" />
 				</h:panelGrid>
-			</h:form>
 
-			<h:form>
 				<p>Select the IVA of the product</p>
 				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
 					columnClasses="label, value">
@@ -52,13 +38,13 @@
 						<f:selectItem itemLabel="23%" itemValue="3" />
 					</p:selectOneListbox>
 				</h:panelGrid>
-			</h:form>
 
-			<h:form>
 				<p>Select the PVP of the product</p>
 				<p:inputNumber />
-			</h:form>
-		</div>
+				<br />
+				<p:commandButton action="#{productManager.updateProduct}"
+				value="Submit" /> 
+			</div>
+		</h:form>
 	</ui:define>
-
 </ui:composition>

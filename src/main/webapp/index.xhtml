@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmls="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsf/jstl/core"
+	template="/templates/template.xhtml">
 
+	<ui:define name="buttons">
+		<h:form>
+			<p:commandButton value="List Product" class="button" action="product" />
+			<p:commandButton value="List Shelf" class="button" action="shelf" />
+		</h:form>
+	</ui:define>
 
-    	<ui:composition xmls="http://www.w3.org/1999/xhtml"
-	    	xmlns:ui="http://java.sun.com/jsf/facelets"
-			xmlns:h="http://java.sun.com/jsf/html"
-	    	xmlns:f="http://java.sun.com/jsf/core"
-	    	xmlns:c="http://java.sun.com/jsf/jstl/core"
-	    	template="/templates/template.xhtml">    
+	<ui:define name="input">
+		<p class="index">Welcome to the Manager</p>
+		<p class="index">To start click on one of the button on the left</p>
+	</ui:define>
 
-		    	<ui:define name="button1">
-		    		<h:form>
-		    			<h:commandButton value="List Product" class="button" action="product"  />
-		    		</h:form>
-		    	</ui:define>
-		    	<ui:define name="button2">
-		    		<h:form>
-		    			<h:commandButton value="List Shelf" class="button" action="shelf"  />
-		    		</h:form>
-		    	</ui:define>
+</ui:composition>
 
-			<ui:define name="input">
-				<p class="index"> Welcome to the Manager</p>
-				<p class="index"> To start click on one of the button on the left</p>
-			</ui:define>
-
-    	</ui:composition>
-    	
-    	

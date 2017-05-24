@@ -1,4 +1,4 @@
-package io.altar.upacademy.Services;
+package io.altar.upacademy.services;
 
 public class ShelfService {
 
