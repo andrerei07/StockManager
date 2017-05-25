@@ -1,8 +1,12 @@
 package io.altar.upacademy.view;
 
+import java.util.Collection;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.event.SelectEvent;
 
 import io.altar.upacademy.Product;
 import io.altar.upacademy.services.ProductService;
@@ -13,6 +17,7 @@ public class ManagedProduct {
 
 	private boolean editable = true;
 	private Product product = new Product();
+	private Product selectedProduct;
 	
 	@Inject
 	private ProductService productService;
@@ -33,11 +38,9 @@ public class ManagedProduct {
 		this.product = product;
 	}
 	public String createProduct() {
-		if(product.getEntityId() == null) {
-			throw new IllegalArgumentException("Invalid Product: Id not null!");
-		}
 		
 		productService.createProduct(product);
+		//System.out.println(product);
 		
 		return "product";
 	}
@@ -51,15 +54,11 @@ public class ManagedProduct {
 		
 		return "product";
 	}
-	
-	public String readProduct(){
-		if(product.getEntityId() == null){
-			throw new IllegalArgumentException("Entity must have a ID");
-		}
+
+	public Collection<Product> readProduct(){
+		return productService.consulteProduct() ;
 		
-		productService.consulteProduct(product);
-		
-		return "product";
+		//return "product";
 	}
 	
 	public String removeProduct(){
@@ -71,4 +70,28 @@ public class ManagedProduct {
 		
 		return "product";
 	}
+
+	public Product getSelectedProduct() {
+		return selectedProduct;
+	}
+
+	public void setSelectedProduct(Product selectedProduct) {
+		this.selectedProduct = selectedProduct;
+	}
+	
+	
+	public void loadDataUpdate(long id){
+		
+		product =productService.consulteOneProduct(id);
+		
+		
+	}
+	
+	public long obtainSelectedProduct(SelectEvent event){
+		selectedProduct = (Product) event.getObject();
+		
+		return selectedProduct.getEntityId();
+	}
+
+	
 }

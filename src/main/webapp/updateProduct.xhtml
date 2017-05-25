@@ -18,33 +18,32 @@
 	</ui:define>
 	<ui:define name="input">
 		<h:form>
-			<div>
-				<p>Insert the name of the product</p>
-				<p:inputText />
+			<p>Insert the name of the product</p>
+			<p:inputText value="#{productManager.product.name}" />
+			
+			<p>Select the discount of the product (%)</p>
+			<h:panelGrid columns="2" cellpadding="1" styleClass="ui-grid">
+				<p:spinner id="minMax" value="#{productManager.product.discount}"
+					min="0" max="100" />
+			</h:panelGrid>
 
-				<p>Select the discount of the product (%)</p>
-				<h:panelGrid columns="2" cellpadding="1" styleClass="ui-grid">
-					<p:spinner id="minMax" value="#{spinnerView.number3}" min="0"
-						max="100" />
-				</h:panelGrid>
+			<p>Select the IVA of the product</p>
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
+				columnClasses="label, value">
+				<p:outputLabel for="basic" value="" />
+				<p:selectOneListbox id="basic" value="#{productManager.product.iva}">
+					<f:selectItem itemLabel="6%" itemValue="6" />
+					<f:selectItem itemLabel="13%" itemValue="13" />
+					<f:selectItem itemLabel="23%" itemValue="23" />
+				</p:selectOneListbox>
+			</h:panelGrid>
 
-				<p>Select the IVA of the product</p>
-				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
-					columnClasses="label, value">
-					<p:outputLabel for="basic" value="" />
-					<p:selectOneListbox id="basic" value="#{selectOneView.option}">
-						<f:selectItem itemLabel="6%" itemValue="1" />
-						<f:selectItem itemLabel="13%" itemValue="2" />
-						<f:selectItem itemLabel="23%" itemValue="3" />
-					</p:selectOneListbox>
-				</h:panelGrid>
+			<p>Select the PVP of the product</p>
+			<p:inputNumber value="#{productManager.product.pvp}" />
 
-				<p>Select the PVP of the product</p>
-				<p:inputNumber />
-				<br />
-				<p:commandButton action="#{productManager.updateProduct}"
-				value="Submit" /> 
-			</div>
+			<br></br>
+			<p:commandButton action="#{productManager.createProduct}"
+				value="Submit" />
 		</h:form>
 	</ui:define>
 </ui:composition>

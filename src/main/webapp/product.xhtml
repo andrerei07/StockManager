@@ -12,7 +12,8 @@
 		<h:form>
 			<p:commandButton value="Create" class="button" action="createProduct" />
 
-			<p:commandButton value="Update" class="button" action="updateProduct" />
+			<p:commandButton value="Update" class="button" action="updateProduct"
+				actionListener="#{productManager.loadDataUpdate(productManager.obtainSelectedProduct(rowSelect))}" />
 
 			<p:commandButton value="Consult" class="button" action="readProduct" />
 
@@ -24,65 +25,38 @@
 
 	<ui:define name="input">
 
+		<h2>Products List</h2>
 
-		<h:form id="form">
-			<p:dataGrid var="car" value="#{dataGridView.cars}" columns="3"
-				layout="grid" rows="12" paginator="true" id="cars"
-				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="6,12,16">
+		<p:dataTable id="radioDT" var="product"
+			value="#{productManager.readProduct()}"
+			selection="#{productManager.selectedProduct}"
+			rowKey="#{product.getEntityId()}">
 
-				<f:facet name="header">
-            Cars for Sale
-        </f:facet>
+			<p:ajax event="rowSelect"
+				listener="#{productManager.obtainSelectedProduct}"></p:ajax>
+			
+			<f:facet name="header">
+            List of Products
+       	 	</f:facet>
+				<p:column selectionMode="single"
+					style="width:16px;text-align:center" />
+				<p:column headerText="Id">
+					<h:outputText value="#{product.getEntityId()}" />
+				</p:column>
+				<p:column headerText="Name">
+					<h:outputText value="#{product.name}" />
+				</p:column>
+				<p:column headerText="Discount(%)">
+					<h:outputText value="#{product.discount}" />
+				</p:column>
+				<p:column headerText="IVA(%)">
+					<h:outputText value="#{product.iva}" />
+				</p:column>
+				<p:column headerText="PVP (euro)">
+					<h:outputText value="#{product.pvp}" />
+				</p:column>
+		</p:dataTable>
 
-				<p:panel header="#{car.id}" style="text-align:center">
-					<h:panelGrid columns="1" style="width:100%">
-						<p:graphicImage name="demo/images/car/#{car.brand}.gif" />
-
-						<h:outputText value="#{car.year}" />
-
-						<p:commandLink update=":form:carDetail"
-							oncomplete="PF('carDialog').show()" title="View Detail">
-							<h:outputText styleClass="ui-icon ui-icon-search"
-								style="margin:0 auto;" />
-							<f:setPropertyActionListener value="#{car}"
-								target="#{dataGridView.selectedCar}" />
-						</p:commandLink>
-					</h:panelGrid>
-				</p:panel>
-
-			</p:dataGrid>
-
-			<p:dialog header="Product Info" widgetVar="carDialog" modal="true"
-				showEffect="fade" hideEffect="fade" resizable="false">
-				<p:outputPanel id="carDetail" style="text-align:center;">
-					<p:panelGrid columns="2"
-						rendered="#{not empty dataGridView.selectedCar}"
-						columnClasses="label,value">
-						<f:facet name="header">
-							<p:graphicImage
-								name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif" />
-						</f:facet>
-
-						<h:outputText value="Name:" />
-						<h:outputText value="#{dataGridView.selectedCar.id}" />
-
-						<h:outputText value="Descount" />
-						<h:outputText value="#{dataGridView.selectedCar.year}" />
-
-						<h:outputText value="PVP:" />
-						<h:outputText value="#{dataGridView.selectedCar.year}" />
-
-						<h:outputText value="IVA:" />
-						<h:outputText value="#{dataGridView.selectedCar.color}"
-							style="color:#{dataGridView.selectedCar.color}" />
-
-						<h:outputText value="Price" />
-						<h:outputText value="$#{dataGridView.selectedCar.price}" />
-					</p:panelGrid>
-				</p:outputPanel>
-			</p:dialog>
-		</h:form>
 
 
 	</ui:define>

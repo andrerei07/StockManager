@@ -1,5 +1,7 @@
 package io.altar.upacademy.services;
 
+import java.util.Collection;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
@@ -25,11 +27,15 @@ public class ProductService {
 		
 	}
 	
-	public Product consulteProduct(Product product){
+	public Collection<Product> consulteProduct(){
+			
+		return	productRepository.consultar();
 		
-		long ID=product.getEntityId();
-		productRepository.consultar(ID);
-		return product;
+	}
+	
+	public Product consulteOneProduct(long id){
+		 
+		return productRepository.consultar(id);	
 	}
 	
 	public Product removeProduct(Product product){
