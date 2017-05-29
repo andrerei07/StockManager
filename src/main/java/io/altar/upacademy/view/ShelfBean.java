@@ -2,7 +2,7 @@ package io.altar.upacademy.view;
 
 import io.altar.upacademy.Shelf;
 
-public class ManagedShelf {
+public class ShelfBean {
 
 	private Shelf prateleira = new Shelf();
 	private boolean editable = true;

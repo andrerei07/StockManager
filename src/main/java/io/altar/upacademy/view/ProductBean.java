@@ -1,23 +1,29 @@
 package io.altar.upacademy.view;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.SelectEvent;
+
+
 
 import io.altar.upacademy.Product;
 import io.altar.upacademy.services.ProductService;
 
 @Named("productManager")
 @RequestScoped
-public class ManagedProduct {
+public class ProductBean {
 
 	private boolean editable = true;
 	private Product product = new Product();
 	private Product selectedProduct;
+	private List<Product> list;
 	
 	@Inject
 	private ProductService productService;
@@ -84,14 +90,20 @@ public class ManagedProduct {
 		
 		product =productService.consulteOneProduct(id);
 		
-		
 	}
 	
-	public long obtainSelectedProduct(SelectEvent event){
-		selectedProduct = (Product) event.getObject();
-		
-		return selectedProduct.getEntityId();
+	public void onRowSelect(SelectEvent event){
+System.out.println(1);
 	}
-
-	
+//	public void onCellEdit(CellEditEvent event){
+//		
+////		Product oldValue = (Product) event.getOldValue();
+////		Product newValue = (Product) event.getNewValue();
+//		
+////		if(newValue != null && !newValue.equals(oldValue)) {
+////            product=newValue;
+////            productService.updateProduct(product);
+////        }
+////        readProduct();
+//	}
 }

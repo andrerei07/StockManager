@@ -6,8 +6,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsf/jstl/core"
-	xmlns:p="http://primefaces.org/ui" 
-	template="/templates/template.xhtml">
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
 
 
 	<ui:define name="buttons">
@@ -18,32 +17,70 @@
 	</ui:define>
 	<ui:define name="input">
 		<h:form>
-			<p>Insert the name of the product</p>
-			<p:inputText value="#{productManager.product.name}" />
-			
-			<p>Select the discount of the product (%)</p>
-			<h:panelGrid columns="2" cellpadding="1" styleClass="ui-grid">
-				<p:spinner id="minMax" value="#{productManager.product.discount}"
-					min="0" max="100" />
-			</h:panelGrid>
 
-			<p>Select the IVA of the product</p>
-			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
-				columnClasses="label, value">
-				<p:outputLabel for="basic" value="" />
-				<p:selectOneListbox id="basic" value="#{productManager.product.iva}">
-					<f:selectItem itemLabel="6%" itemValue="6" />
-					<f:selectItem itemLabel="13%" itemValue="13" />
-					<f:selectItem itemLabel="23%" itemValue="23" />
-				</p:selectOneListbox>
-			</h:panelGrid>
+			<p:dataTable id="products" var="product" value="#{productManager.readProduct()}" editable="true" editMode="cell" >
+				<f:facet name="header">
+           			Double click on the fields to edit their value
+       			</f:facet>
+       			
+       			<p:ajax event="cellEdit" listener="#{productManager.onCellEdit}" update="j_idt10:products"/>
+       			
+				<p:column headerText="Id">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{product.getEntityId()}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{product.getEntityId()}" style="width:96%" label="Name" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
 
-			<p>Select the PVP of the product</p>
-			<p:inputNumber value="#{productManager.product.pvp}" />
+				<p:column headerText="Name">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{product.name}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{product.name}" style="width:96%" label="Name" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
 
-			<br></br>
-			<p:commandButton action="#{productManager.createProduct}"
-				value="Submit" />
+				<p:column headerText="Discount">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{product.discount}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{product.discount}" style="width:96%" label="Name" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="IVA">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{product.iva}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{product.iva}" style="width:96%" label="Name" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="PVP">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{product.pvp}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{product.pvp}" style="width:96%" label="Name" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+			</p:dataTable>
+
 		</h:form>
 	</ui:define>
 </ui:composition>

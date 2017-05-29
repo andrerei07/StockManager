@@ -1,7 +1,9 @@
 package io.altar.upacademy.repositories;
 
+import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.altar.upacademy.Entity;
@@ -11,6 +13,7 @@ public abstract class EntityRepository<T extends Entity> {
 	private Map<Long, T> mapa = new LinkedHashMap<>();
 
 	private long maiorId = 0;
+	
 
 	// ++maiorId incrementa id e atualiza a variavel ao mesmo tempo e faz o
 	// return do mesmo

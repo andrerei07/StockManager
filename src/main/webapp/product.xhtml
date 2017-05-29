@@ -12,10 +12,9 @@
 		<h:form>
 			<p:commandButton value="Create" class="button" action="createProduct" />
 
-			<p:commandButton value="Update" class="button" action="updateProduct"
-				actionListener="#{productManager.loadDataUpdate(productManager.obtainSelectedProduct(rowSelect))}" />
+			<p:commandButton value="Update" class="button" action="updateProduct"/>
 
-			<p:commandButton value="Consult" class="button" action="readProduct" />
+			<p:commandButton value="Details" class="button" action="readProduct" />
 
 			<p:commandButton value="Remove" class="button" action="removeProduct" />
 
@@ -32,8 +31,6 @@
 			selection="#{productManager.selectedProduct}"
 			rowKey="#{product.getEntityId()}">
 
-			<p:ajax event="rowSelect"
-				listener="#{productManager.obtainSelectedProduct}"></p:ajax>
 			
 			<f:facet name="header">
             List of Products
@@ -45,15 +42,6 @@
 				</p:column>
 				<p:column headerText="Name">
 					<h:outputText value="#{product.name}" />
-				</p:column>
-				<p:column headerText="Discount(%)">
-					<h:outputText value="#{product.discount}" />
-				</p:column>
-				<p:column headerText="IVA(%)">
-					<h:outputText value="#{product.iva}" />
-				</p:column>
-				<p:column headerText="PVP (euro)">
-					<h:outputText value="#{product.pvp}" />
 				</p:column>
 		</p:dataTable>
 

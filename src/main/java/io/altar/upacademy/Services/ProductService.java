@@ -1,6 +1,7 @@
 package io.altar.upacademy.services;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -11,6 +12,7 @@ import io.altar.upacademy.repositories.ProductRepository;
 @Named("productService")
 @RequestScoped
 public class ProductService {
+	
 
 	private ProductRepository productRepository = ProductRepository.getInstance();
 	
@@ -43,5 +45,6 @@ public class ProductService {
 		productRepository.remover(product);
 		return product;
 	}
+	
 
 }
