@@ -1,17 +1,33 @@
 package io.altar.upacademy.view;
 
-import io.altar.upacademy.Shelf;
+import java.util.Collection;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import io.altar.upacademy.Product;
+import io.altar.upacademy.Shelf;
+import io.altar.upacademy.services.ShelfService;
+
+@Named("shelfManager")
+@RequestScoped
 public class ShelfBean {
 
-	private Shelf prateleira = new Shelf();
+	private Shelf shelf = new Shelf();
 	private boolean editable = true;
+	private Shelf selectedShelf;
+	private Product selectedProduct;
+
 	
-	public Shelf getPrateleira() {
-		return prateleira;
+	@Inject
+	private ShelfService shelfService;
+	
+	public Shelf getShelf() {
+		return shelf;
 	}
-	public void setPrateleira(Shelf prateleira) {
-		this.prateleira = prateleira;
+	public void setShelf(Shelf prateleira) {
+		this.shelf = prateleira;
 	}
 	public boolean isEditable() {
 		return editable;
@@ -19,4 +35,33 @@ public class ShelfBean {
 	public void setEditable(boolean editable) {
 		this.editable = editable;
 	}
+	public Shelf getSelectedShelf() {
+		return selectedShelf;
+	}
+	public void setSelectedShelf(Shelf selectedShelf) {
+		this.selectedShelf = selectedShelf;
+	}
+	
+	public String createShelf(){
+		
+		shelfService.createShelf(shelf);
+		return "shelf";
+	}
+	
+	public String updateShelf(){
+		
+		shelfService.updateShelf(shelf);
+		return "shelf";
+	}
+	
+	public Collection<Shelf> readShelf(){
+		return shelfService.consultShelf(shelf);
+	}
+	public Product getSelectedProduct() {
+		return selectedProduct;
+	}
+	public void setSelectedProduct(Product selectedProduct) {
+		this.selectedProduct = selectedProduct;
+	}
 }
+

@@ -45,9 +45,7 @@ public class ProductBean {
 	}
 	public String createProduct() {
 		
-		productService.createProduct(product);
-		//System.out.println(product);
-		
+		productService.createProduct(product);		
 		return "product";
 	}
 	
@@ -62,17 +60,14 @@ public class ProductBean {
 	}
 
 	public Collection<Product> readProduct(){
-		return productService.consulteProduct() ;
+		return productService.consultProduct() ;
 		
 		//return "product";
 	}
 	
 	public String removeProduct(){
-		if(product.getEntityId() == null){
-			throw new IllegalArgumentException("Entity must have a ID");
-		}
 		
-		productService.removeProduct(product);
+		productService.removeProduct(list);
 		
 		return "product";
 	}
@@ -92,9 +87,6 @@ public class ProductBean {
 		
 	}
 	
-	public void onRowSelect(SelectEvent event){
-System.out.println(1);
-	}
 //	public void onCellEdit(CellEditEvent event){
 //		
 ////		Product oldValue = (Product) event.getOldValue();
@@ -106,4 +98,12 @@ System.out.println(1);
 ////        }
 ////        readProduct();
 //	}
+
+	public List<Product> getList() {
+		return list;
+	}
+
+	public void setList(List<Product> list) {
+		this.list = list;
+	}
 }

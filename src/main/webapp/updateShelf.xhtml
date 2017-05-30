@@ -1,23 +1,108 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-    	<ui:composition xmls="http://www.w3.org/1999/xhtml"
-	    	xmlns:ui="http://java.sun.com/jsf/facelets"
-			xmlns:h="http://java.sun.com/jsf/html"
-	    	xmlns:f="http://java.sun.com/jsf/core"
-	    	xmlns:c="http://java.sun.com/jsf/jstl/core"
-	    	template="/templates/template.xhtml">    
+<ui:composition xmls="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsf/jstl/core"
+	template="/templates/template.xhtml" xmlns:p="http://primefaces.org/ui">
 
-		    	
-		    	<ui:define name="button5">
-		    		<h:form>
-		    			<h:commandButton value="Previous Menu" class="button" action="shelf"  />
-		    		</h:form>
-		    	</ui:define>
 
-			<ui:define name="input">
-			<p>Adicionar as caixas para edicao</p>
-			</ui:define>
+	<ui:define name="buttons">
+		<h:form>
+			<p:commandButton value="Previous Menu" class="button" action="shelf" />
+		</h:form>
+	</ui:define>
 
-    	</ui:composition>
-    	
+	<ui:define name="input">
+		<h:form>
+			<p:dataTable id="shelfs" var="shelf"
+				value="#{shelfManager.readShelf()}" editable="true" editMode="cell">
+				<f:facet name="header">
+           			Double click on the fields to edit their value
+       			</f:facet>
+
+				<p:ajax event="cellEdit" update="j_idt10:shelfs" />
+
+				<p:column headerText="Id">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{shelf.getEntityId()}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{shelf.getEntityId()}" style="width:96%"
+								label="Name" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Local ID">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{shelf.idLocal}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{shelf.idLocal}" style="width:96%"
+								label="Local Id" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Capacity">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{shelf.capacity}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{shelf.capacity}" style="width:96%"
+								label="Capacity" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Location">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{shelf.location}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{shelf.location}" style="width:96%"
+								label="location" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Product">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{shelf.product.name}" />
+						</f:facet>
+						<f:facet name="input">
+							<h:selectOneMenu value="#{shelf.product}"
+								style="width:100%">
+								<f:selectItems value="#{productManager.readProduct()}"
+									var="product" itemLabel="#{product.name}"
+									itemValue="#{product}" />
+							</h:selectOneMenu>
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Rent Cost">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{shelf.rentCost}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{shelf.rentCost}" style="width:96%"
+								label="rentCost" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

@@ -6,17 +6,49 @@
 			xmlns:h="http://java.sun.com/jsf/html"
 	    	xmlns:f="http://java.sun.com/jsf/core"
 	    	xmlns:c="http://java.sun.com/jsf/jstl/core"
-	    	template="/templates/template.xhtml">    
+	    	template="/templates/template.xhtml"
+	    	xmlns:p="http://primefaces.org/ui">    
 
 		    	
-		    	<ui:define name="button5">
+		    	<ui:define name="buttons">
 		    		<h:form>
-		    			<h:commandButton value="Previous Menu" class="button" action="shelf"  />
+		    			<p:commandButton value="Previous Menu" class="button" action="shelf"  />
 		    		</h:form>
 		    	</ui:define>
 
 			<ui:define name="input">
-			<p>Adicionar grid para consultar</p>
+		
+		<h:form>
+			<h2>Shelf List</h2>
+
+		<p:dataTable id="radioDT" var="shelf"
+			value="#{shelfManager.readShelf()}">
+
+			
+			<f:facet name="header">
+            List of Products
+       	 	</f:facet>
+				<p:column headerText="Id">
+					<h:outputText value="#{shelf.getEntityId()}" />
+				</p:column>
+				<p:column headerText="ID Local">
+					<h:outputText value="#{shelf.idLocal}" />
+				</p:column>
+				<p:column headerText="Capacity">
+					<h:outputText value="#{shelf.capacity}" />
+				</p:column>
+				<p:column headerText="Product">
+					<h:outputText value="#{shelf.product}" />
+				</p:column>
+				<p:column headerText="Rent Cost">
+					<h:outputText value="#{shelf.rentCost}" />
+				</p:column>
+				<p:column headerText="Location">
+					<h:outputText value="#{shelf.location}" />
+				</p:column>
+		</p:dataTable>
+		</h:form>
+		
 			</ui:define>
 
     	</ui:composition>

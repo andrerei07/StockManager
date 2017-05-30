@@ -27,20 +27,15 @@
 		<h2>Products List</h2>
 
 		<p:dataTable id="radioDT" var="product"
-			value="#{productManager.readProduct()}"
-			selection="#{productManager.selectedProduct}"
-			rowKey="#{product.getEntityId()}">
-
+			value="#{productManager.readProduct()}">
 			
 			<f:facet name="header">
             List of Products
        	 	</f:facet>
-				<p:column selectionMode="single"
-					style="width:16px;text-align:center" />
-				<p:column headerText="Id">
+				<p:column headerText="Id" style="width:16px;text-align:center">
 					<h:outputText value="#{product.getEntityId()}" />
 				</p:column>
-				<p:column headerText="Name">
+				<p:column headerText="Name" style="width:16px;text-align:center">
 					<h:outputText value="#{product.name}" />
 				</p:column>
 		</p:dataTable>

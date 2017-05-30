@@ -6,31 +6,16 @@
 			xmlns:h="http://java.sun.com/jsf/html"
 	    	xmlns:f="http://java.sun.com/jsf/core"
 	    	xmlns:c="http://java.sun.com/jsf/jstl/core"
+	    	xmlns:p="http://primefaces.org/ui"
 	    	template="/templates/template.xhtml">    
 
-		    	<ui:define name="button1">
+		    	<ui:define name="buttons">
 		    		<h:form>
-		    			<h:commandButton value="create" class="button" action="createShelf"  />
-		    		</h:form>
-		    	</ui:define>
-		    	<ui:define name="button2">
-		    		<h:form>
-		    			<h:commandButton value="Update" class="button" action="updateShelf"  />
-		    		</h:form>
-		    	</ui:define>
-		    	<ui:define name="button3">
-		    		<h:form>
-		    			<h:commandButton value="Consult" class="button" action="readShelf"  />
-		    		</h:form>
-		    	</ui:define>
-		    	<ui:define name="button4">
-		    		<h:form>
-		    			<h:commandButton value="Remove" class="button" action="removeShelf"  />
-		    		</h:form>
-		    	</ui:define>
-		    	<ui:define name="button5">
-		    		<h:form>
-		    			<h:commandButton value="Previous Menu" class="button" action="index"  />
+		    			<p:commandButton value="create" class="button" action="createShelf"  />
+		    			<p:commandButton value="Update" class="button" action="updateShelf"  />
+		    			<p:commandButton value="Consult" class="button" action="readShelf"  />
+		    			<p:commandButton value="Remove" class="button" action="removeShelf"  />
+		    			<p:commandButton value="Previous Menu" class="button" action="index"  />
 		    		</h:form>
 		    	</ui:define>
 

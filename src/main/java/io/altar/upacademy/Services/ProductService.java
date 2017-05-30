@@ -29,7 +29,7 @@ public class ProductService {
 		
 	}
 	
-	public Collection<Product> consulteProduct(){
+	public Collection<Product> consultProduct(){
 			
 		return	productRepository.consultar();
 		
@@ -40,11 +40,17 @@ public class ProductService {
 		return productRepository.consultar(id);	
 	}
 	
-	public Product removeProduct(Product product){
+	public String removeProduct(List<Product> list){
 		
-		productRepository.remover(product);
-		return product;
+		int numProdutosSelecionados = list.size();
+		for(int i=0 ;i<numProdutosSelecionados;i++){
+			Product product =list.get(i);
+			productRepository.remover(product);
+	
+		}
+		return "product";
 	}
+	
 	
 
 }

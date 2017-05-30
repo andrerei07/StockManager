@@ -23,14 +23,14 @@
            			Double click on the fields to edit their value
        			</f:facet>
        			
-       			<p:ajax event="cellEdit" listener="#{productManager.onCellEdit}" update="j_idt10:products"/>
+       			<p:ajax event="cellEdit"  update="j_idt10:products"/>
        			
 				<p:column headerText="Id">
 					<p:cellEditor>
 						<f:facet name="output">
 							<h:outputText value="#{product.getEntityId()}" />
 						</f:facet>
-						<f:facet name="input">
+						<f:facet name="input" >
 							<p:inputText value="#{product.getEntityId()}" style="width:96%" label="Name" />
 						</f:facet>
 					</p:cellEditor>

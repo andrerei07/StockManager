@@ -2,16 +2,17 @@ package io.altar.upacademy;
 
 public class Shelf extends Entity{
 	
-	private String idLocal;
+	private long idLocal;
 	private int capacity;
 	private Product product;
 	private double rentCost;
+	private String location;
 	
 	public Shelf(){
 		
 	}
 	
-	public Shelf(String localiId, int capacity,Product product,double rentCost){
+	public Shelf(long localiId, int capacity,Product product,double rentCost){
 		this.idLocal=localiId;
 		this.capacity=capacity;
 		this.product=product;
@@ -19,10 +20,13 @@ public class Shelf extends Entity{
 		
 	}
 		
-	public String getIdLocal() {
+	public long getIdLocal() {
 		return idLocal;
 	}
-	public void setLocaliId(String localiId) {
+	public void setIdLocal(long idLocal) {
+		this.idLocal = idLocal;
+	}
+	public void setLocaliId(long localiId) {
 		this.idLocal = localiId;
 	}
 	public int getCapacity() {
@@ -63,5 +67,15 @@ public class Shelf extends Entity{
 	public String toString(){
 		return this.getEntityId().toString();
 	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	
 	
 }

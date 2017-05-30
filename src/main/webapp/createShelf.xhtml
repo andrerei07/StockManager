@@ -1,23 +1,69 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-    	<ui:composition xmls="http://www.w3.org/1999/xhtml"
-	    	xmlns:ui="http://java.sun.com/jsf/facelets"
-			xmlns:h="http://java.sun.com/jsf/html"
-	    	xmlns:f="http://java.sun.com/jsf/core"
-	    	xmlns:c="http://java.sun.com/jsf/jstl/core"
-	    	template="/templates/template.xhtml">    
+<ui:composition xmls="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsf/jstl/core"
+	template="/templates/template.xhtml" xmlns:p="http://primefaces.org/ui">
 
-		    	
-		    	<ui:define name="button5">
-		    		<h:form>
-		    			<h:commandButton value="Previous Menu" class="button" action="shelf"  />
-		    		</h:form>
-		    	</ui:define>
 
-			<ui:define name="input">
-			<p>Adicionar as caixas para criacao</p>
-			</ui:define>
+	<ui:define name="buttons">
+		<h:form>
+			<p:commandButton value="Previous Menu" class="button" action="shelf" />
+		</h:form>
+	</ui:define>
 
-    	</ui:composition>
-    	
+	<ui:define name="input">
+	<h:form>
+		<p>Insert the local ID of the shelf</p>
+		<p:inputText value="#{shelfManager.shelf.idLocal}" />
+		
+		<p>Insert the capacity of the shelf</p>
+		<p:inputText value="#{shelfManager.shelf.capacity}" />
+		
+		<p>Insert the location of the shelf ( floor level , mid shelf or top Shelf )</p>
+		<p:inputText value="#{shelfManager.shelf.location}" />
+
+		<br />
+
+		<p></p>
+		<p:dataTable id="radioDT" var="product"
+			value="#{productManager.readProduct()}"
+			selection="#{shelfManager.shelf.product}"
+			rowKey="#{product.getEntityId()}">
+
+
+			<f:facet name="header">
+            Select the product to put on the shelf from the List of Products
+       	 	</f:facet>
+			<p:column selectionMode="single" style="width:16px;text-align:center" />
+			<p:column headerText="Id">
+				<h:outputText value="#{product.getEntityId()}" />
+			</p:column>
+			<p:column headerText="Name">
+				<h:outputText value="#{product.name}" />
+			</p:column>
+			<p:column headerText="Discount(%)">
+				<h:outputText value="#{product.discount}" />
+			</p:column>
+			<p:column headerText="IVA(%)">
+				<h:outputText value="#{product.iva}" />
+			</p:column>
+			<p:column headerText="PVP (euro)">
+				<h:outputText value="#{product.pvp}" />
+			</p:column>
+			<p:commandButton value="Add"></p:commandButton>
+		</p:dataTable>
+
+		<p>Insert the rent Cost of the Shelf</p>
+		<p:inputText value="#{shelfManager.shelf.rentCost}" />
+
+		<br />
+
+		<p:commandButton value="Create" action="#{shelfManager.createShelf}"></p:commandButton>
+	</h:form>
+	</ui:define>
+
+</ui:composition>
