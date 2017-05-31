@@ -1,6 +1,7 @@
 package io.altar.upacademy.services;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -36,5 +37,15 @@ public class ShelfService {
 	public Shelf  consulteOneShelf(long ID){
 		
 		return shelfRepository.consultar(ID);
+	}
+	
+	public String removeShelf(List<Shelf> list){
+		
+		int numShelfSelecionados = list.size();
+		for(int i=0 ;i<numShelfSelecionados;i++){
+			Shelf shelf =list.get(i);
+			shelfRepository.remover(shelf);
+		}
+		return "shelf";
 	}
 }

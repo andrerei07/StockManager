@@ -6,17 +6,51 @@
 			xmlns:h="http://java.sun.com/jsf/html"
 	    	xmlns:f="http://java.sun.com/jsf/core"
 	    	xmlns:c="http://java.sun.com/jsf/jstl/core"
-	    	template="/templates/template.xhtml">    
+	    	template="/templates/template.xhtml"
+	    	xmlns:p="http://primefaces.org/ui">    
 
 		    	
-		    	<ui:define name="button5">
+		    	<ui:define name="buttons">
 		    		<h:form>
 		    			<h:commandButton value="Previous Menu" class="button" action="shelf"  />
 		    		</h:form>
 		    	</ui:define>
 
 			<ui:define name="input">
-			<p>Adicionar as caixas para remocao</p>
+		
+		<p:dataTable id="checkboxDT" var="shelf"
+				value="#{shelfManager.readShelf()}"
+				selection="#{shelfManager.list}" rowKey="#{shelf.getEntityId()}">
+				<f:facet name="header">
+              List of Shelfs
+        </f:facet>
+				<p:column selectionMode="multiple"
+					style="width:16px;text-align:center" />
+				<p:column headerText="Id">
+					<h:outputText value="#{shelf.getEntityId()}" />
+				</p:column>
+				<p:column headerText="ID Local">
+					<h:outputText value="#{shelf.idLocal}" />
+				</p:column>
+				<p:column headerText="Capacity">
+					<h:outputText value="#{shelf.capacity}" />
+				</p:column>
+				<p:column headerText="Product">
+					<h:outputText value="#{shelf.product}" />
+				</p:column>
+				<p:column headerText="Rent Cost">
+					<h:outputText value="#{shelf.rentCost}" />
+				</p:column>
+				<p:column headerText="Location">
+					<h:outputText value="#{shelf.location}" />
+				</p:column>
+				
+				<f:facet name="footer">
+					<p:commandButton process="checkboxDT" value="delete"
+						action="#{shelfManager.removeShelf()}" />
+				</f:facet>
+			</p:dataTable>
+		
 			</ui:define>
 
     	</ui:composition>

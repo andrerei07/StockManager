@@ -1,6 +1,7 @@
 package io.altar.upacademy.view;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -18,7 +19,7 @@ public class ShelfBean {
 	private boolean editable = true;
 	private Shelf selectedShelf;
 	private Product selectedProduct;
-
+	private List<Shelf> list;
 	
 	@Inject
 	private ShelfService shelfService;
@@ -62,6 +63,18 @@ public class ShelfBean {
 	}
 	public void setSelectedProduct(Product selectedProduct) {
 		this.selectedProduct = selectedProduct;
+	}
+	public List<Shelf> getList() {
+		return list;
+	}
+	public void setList(List<Shelf> list) {
+		this.list = list;
+	}
+	
+	public String removeShelf(){
+		
+		shelfService.removeShelf(list);
+		return "shelf";
 	}
 }
 
