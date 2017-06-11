@@ -44,6 +44,7 @@ public class ShelfService {
 		int numShelfSelecionados = list.size();
 		for(int i=0 ;i<numShelfSelecionados;i++){
 			Shelf shelf =list.get(i);
+			System.out.println("entrou for"+shelf.getEntityId());
 			shelfRepository.remover(shelf);
 		}
 		return "shelf";
